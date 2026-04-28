@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Colores base portfolio ── */
+  --color-bg-primary:   #09090b;
+  --color-bg-secondary: #09090b;
+  --color-bg-card:      #18181b;
+  --color-bg-card-hover:#1c1c1c;
+
+  --color-accent-cyan:        #3b82f6;
+  --color-accent-cyan-dark:   #0099cc;
+  --color-accent-cyan-glow:   #3b82f644;
+  --color-accent-purple:      #8b5cf6;
+  --color-accent-purple-light:#a78bfa;
+  --color-accent-emerald:     #10b981;
+
+  --color-text-primary: #e2e8f0;
+  --color-text-muted:   #64748b;
+  --color-text-dim:     #334155;
+
+  --color-danger:       #ef4444;
+  --color-success:      #10b981;
+
+  --color-border:       #1e3a5f;
+  --color-border-bright:#2d5a8e;
+
+  /* ── Tipografía ── */
+  --font-orbitron: "Orbitron", monospace;
+  --font-rajdhani: "Rajdhani", sans-serif;
+  --font-inter:    "Inter", sans-serif;
+  --font-fira:     "Fira Code", monospace;
+  --font-sans:     "Inter", sans-serif;
+  --font-mono:     "Fira Code", monospace;
+
+  /* ── Glows ── */
+  --shadow-cyan:   0 0 20px #3b82f644, 0 0 40px #3b82f61a;
+  --shadow-purple: 0 0 20px #8b5cf644, 0 0 40px #8b5cf61a;
+  --shadow-danger: 0 0 20px #ef444444, 0 0 40px #ef44441a;
+}
+
+/* ── Reset base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #1e3a5f #09090b;
+}
+html::-webkit-scrollbar { width: 5px; }
+html::-webkit-scrollbar-track { background: #09090b; }
+html::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 3px; }
+html::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+body {
+  margin: 0;
+  background-color: #09090b;
+  color: #e2e8f0;
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root { min-height: 100vh; }
+
+/* ── Font utils ── */
+.font-orbitron { font-family: "Orbitron", monospace; }
+.font-rajdhani { font-family: "Rajdhani", sans-serif; }
+.font-fira     { font-family: "Fira Code", monospace; }
+
+/* ── Glow utils ── */
+.glow-cyan   { box-shadow: 0 0 20px #3b82f644, 0 0 40px #3b82f61a; }
+.glow-purple { box-shadow: 0 0 20px #8b5cf644, 0 0 40px #8b5cf61a; }
+.glow-red    { box-shadow: 0 0 20px #ef444444, 0 0 40px #ef44441a; }
+.glow-emerald{ box-shadow: 0 0 20px #10b98144, 0 0 40px #10b9811a; }
+
+.text-glow-cyan   { text-shadow: 0 0 12px #3b82f6, 0 0 24px #3b82f644; }
+.text-glow-purple { text-shadow: 0 0 12px #8b5cf6, 0 0 24px #8b5cf644; }
+
+/* ── Glassmorphism ── */
+.glass {
+  background: rgba(10, 22, 40, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 58, 95, 0.5);
+}
+
+/* ── Grid background ── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Scanlines ── */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0, 0, 0, 0.07) 2px, rgba(0, 0, 0, 0.07) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Gradient text utility ── */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glitch animation ── */
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 98% 0); transform: translateX(0); }
+  20%       { clip-path: inset(20% 0 60% 0); transform: translateX(-4px); }
+  40%       { clip-path: inset(50% 0 30% 0); transform: translateX(4px); }
+  60%       { clip-path: inset(80% 0 5% 0);  transform: translateX(-2px); }
+  80%       { clip-path: inset(5% 0 80% 0);  transform: translateX(2px); }
+}
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(98% 0 0 0); transform: translateX(0); }
+  20%       { clip-path: inset(60% 0 20% 0); transform: translateX(4px); }
+  40%       { clip-path: inset(30% 0 50% 0); transform: translateX(-4px); }
+  60%       { clip-path: inset(5% 0 80% 0);  transform: translateX(2px); }
+  80%       { clip-path: inset(80% 0 5% 0);  transform: translateX(-2px); }
+}
